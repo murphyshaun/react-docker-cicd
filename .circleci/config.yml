@@ -37,10 +37,10 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - node/test
-      - build-and-push
-        requires:
-            - node/test
-        filters:
-          branches:
-            only:
-              - master
+      - build-and-push:
+          requires:
+              - node/test
+          filters:
+            branches:
+              only:
+                - master
