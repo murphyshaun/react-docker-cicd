@@ -16,7 +16,7 @@ jobs:
     steps:
       - setup_remote_docker
       - checkout
-      - docker/check
+      - docker/check:
         docker-username: DOCKER_USER
         docker-password: DOCKER_PASSWORD
       - docker/build:
@@ -38,9 +38,9 @@ workflows:
     jobs:
       - node/test
       - build-and-push
-        filters:
-          requires:
+        requires:
             - node/test
+        filters:
           branches:
             only:
               - master
